@@ -4,9 +4,125 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스크롤 없는 100% Layout</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href='style.css'>
 </head>
 <body>
-  <!-- 스크롤 없는 100% Layout -->
+  <!-- ! scroll 없는 100% Layout -->
+
+  <!-- 
+    · scroll 없는 100% LayOut은 전체 Page를 구성할 때 자주 사용
+    · contents의 길이에 상관없이 browser 화면 전체를 채우는 LayOut
+    · Web Page의 위에 있는 menu 영역의 높이는 고정
+    · 부모 영역에서 menu 영역을 뺀 나머지 영역 전체를 자식 element가 채움
+    · contents의 길이가 길어지면 scroll 막대가 browser가 아니라 contents 영역에 나타남
+   -->
+
+  <!-- 
+     ! 'flex-direction: column' 속성으로 수직 방향 정렬
+     · FlexBox LayOut 주축의 방향은 왼쪽에서 오른쪽으로 향하는 수평 방향 (기본 방향은 'row')
+     · element를 수직으로 배열하려면 주축이 위에서 아래로 향해야 함
+     · flex container의 'flex-direction' 속성의 값을 'column'으로 설정하면 주축의 방향을 위에서 아래로 향하는 수직 방향으로 바꿀 수 있음
+  -->
+
+  <!-- 
+    ! 'flex: 1' 속성으로 자식 element의 크기 확장
+    · 'flex item'에 적용한 'flex' 속성은 'flex item'의 크기와 관련된 속성이며, 'flex-grow', 'flex-shrink', 'flex-basis' 속성을 축약한 표현
+    예시)
+    flex 자식 element {
+      flex: flex-grow flex-shrink flex-basis;
+    }
+              ↓
+    .child {
+      flex: 1 1 0;
+    }
+    'flex: 1 1 0'은 flex: 1
+  -->
+
+  <!-- 
+    ! 'flex-grow' 속성
+    · 'flex item'의 확장에 관련된 속성
+    · 0과 양의 정수를 속성값에 사용
+    · 속성값이 0이면 'flex container'의 크기가 커져도 'flex item'의 크기가 커지지 않고, 원래 크기로 유지
+    · 'flex container'의 크기가 커질 때 'flex item'의 크기도 커지게 하려면 1 이상의 값을 속성값으로 설정
+    · 속성값이 1 이상이면 'flex item'의 원래 크기에 상관없이 flex container를 채우도록 'flex item'의 크기가 커짐
+  -->
+
+  <!-- 
+    ! 'flex-shrink' 속성
+    · 'flex-item'의 축소에 관련된 속성
+    · 속성값으로 0과 양의 정수를 사용, 기본값은 1
+    · 속성값이 0이면 'flex container'의 크기가 'flex item'의 크기보다 작아져도, 'flex item'의 크기가 줄어들지 않고 원래 크기로 유지
+    · 속성값이 1 이상이면 'flex container'의 크기가 'flex item'의 크기보다 작아질 때 'flex item'의 크기가 'flex container'의 크기에 맞춰 줄어듦
+  -->
+
+  <!-- 
+    ! 'flex-basis' 속성
+    · 'flex-item'의 기본 크기를 결정하는 속성
+    · 기본값은 auto
+    · width 속성에서 사용하는 모든 단위(px, %, em, rem 등)를 속성값에 사용 가능
+    · 속성값을 30px이나 30%와 같이 설정하면, 'flex item'의 크기가 고정
+    · 'flex-basis' 속성에서 auto와 함께 자주 사용하는 속성값은 0
+    · 속성값을 0으로 설정하면 'flex item'은 절대적 'flex item(absolute flex item)'이 되어, 'flex container'를 기준으로 크기 결정
+    주의!! - 'flex-basis 속성값을 0으로 선언할 때는 'flex-basis: 0px'와 같이 단위도 함께 설정
+    · 속성값을 auto로 설정하면 'flex item'은 상대적 'flex item(relative flex item)'이 되어, contents의 크기를 기준으로 크기 결정
+  -->
+
+  <!-- 
+    ! 'flex: 1'의 의미
+    · 'flex-grow', 'flex-shrink', 'flex-basis' 속성을 축약해서 flex 속성으로 표현할 때 'flex: 1' 속성은 'flex: 1 1 0' 속성을 의미
+    · 즉, 'flex-grow' 속성값이 1이고, 'flex-shrink' 속성값이 1이기 때문에 'flex container'의 크기에 따라 'flex item'의 크기도 커지거나 작아짐
+    · flex 속성값으로 정수 하나만 선언하면 선언한 값은 flex-grow 속성의 값이 되고, 나머지는 기본값인 flex-shrink: 1 속성과 flex-basis: 0 속성이 적용
+    · flex 속성에 한 개의 정숫값만 있으면, 이것은 flex-grow 속성의 값만 지정하는 단축 속성이다.
+    예) flex: 2는 flex: 2 1 0
+        flex: 3은 flex: 3 1 0
+  -->
+      
+  <div id="wrap" class="wrap">
+    <header class="header"></header>
+    <div class="tablist"></div>
+    <div class="content">
+      <div class="aside"></div>
+      <div class="main">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum. 
+      </div>
+    </div>
+  </div>
 </body>
 </html>
