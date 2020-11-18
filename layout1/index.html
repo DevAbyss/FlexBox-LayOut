@@ -72,16 +72,22 @@
     · 'flex-grow', 'flex-shrink', 'flex-basis' 속성을 축약해서 flex 속성으로 표현할 때 'flex: 1' 속성은 'flex: 1 1 0' 속성을 의미
     · 즉, 'flex-grow' 속성값이 1이고, 'flex-shrink' 속성값이 1이기 때문에 'flex container'의 크기에 따라 'flex item'의 크기도 커지거나 작아짐
     · flex 속성값으로 정수 하나만 선언하면 선언한 값은 flex-grow 속성의 값이 되고, 나머지는 기본값인 flex-shrink: 1 속성과 flex-basis: 0 속성이 적용
-    · flex 속성에 한 개의 정숫값만 있으면, 이것은 flex-grow 속성의 값만 지정하는 단축 속성이다.
+    · flex 속성에 한 개의 정숫값만 있으면, 이것은 flex-grow 속성의 /값만 지정하는 단축 속성이다.
     예) flex: 2는 flex: 2 1 0
         flex: 3은 flex: 3 1 0
   -->
-      
-  <div id="wrap" class="wrap">
-    <header class="header"></header>
-    <div class="tablist"></div>
+  
+  <div class="container">
+    <nav class="nav">
+      메뉴 사이드 - 'flex-direction: column' 연습
+    </nav>
+    <div class="tablist">
+      탭 리스트 - 'flex-direction: column' 연습
+    </div>
     <div class="content">
-      <div class="aside"></div>
+      <aside class="aside">
+        사이드 영역
+      </aside>
       <div class="main">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nostrum rerum, illo, facere voluptatibus dicta, aliquid quibusdam natus nihil unde sint non rem hic? Nam vero minus eaque asperiores illum.
