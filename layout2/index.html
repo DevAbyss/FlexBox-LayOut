@@ -7,6 +7,52 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 내비게이션 영역 -->
+  <!-- ! 내비게이션 영역 -->
+
+  <!-- 
+    · 메뉴의 대부분을 내비게이션 영역의 왼쪽으로 정렬하고, 1~2개의 메뉴만 오른쪽으로 정렬 (반대 경우도 있음)
+    · 주로 GNB (Global Navigation Bar)에 해당하는 요소나 로그인 버튼을 오른쪽으로 정렬
+    · 크기가 고정돼야 하는 'flex item (.flex-item class)에는 'flex: none' 속성 적용
+    · 오른쪽으로 정렬할 GNB나 로그인 버튼에 해당하는 요소 (.flex-item-gnb class)에는 'margin-left: auto' 속성 적용
+   -->
+
+   <!-- 
+    ! 'flex: none' 속성으로 자식 요소의 크기 고정
+    · 'flex item'의 flex 속성 기본값은 'flex: 0 1 auto'
+    · 기본값을 적용하면 'flex container'의 크기가 'flex item' 전체 크기보다 작아질 때 'flex item'의 크기가 작아짐
+    · 'flex item'의 크기를 고정하려면 반드시 'flex: none' 속성 적용
+    # 'flex: initial': 'flex: 0 1 auto' (기본값)
+      - 'flex container의 크기가 작아지면 'flex item'의 크기가 작아지지만, 'flex container'의 크기가 커져도 'flex item'의 크기가 커지지 않음
+    # 'flex: none': 'flex: 0 0 auto'
+      - 'flex item'의 크기가 커지거나 작아지지 않음
+      - 'flex container'의 크기에 영향을 받지 않고, 'flex item'의 원래 크기 유지
+    # 'flex: auto': 'flex: 1 1 auto'
+      - 'flex container'의 크기에 맞춰 'flex item'의 크기가 커지거나 작아짐
+    # 'flex: 양의 정수': 'flex: 숫자 1 0'
+      - 'flex container'를 일정한 비율로 나눠 가지면서, 'flex container'의 크기에 따라 'flex item'의 크기가 커지거나 작아짐
+    -->
+
+    <!-- 
+      ! 'margin-left: auto' 속성으로 자식 요소를 오른쪽에 배치
+      · margin(요소의 바깥 여백 설정) 속성값으로 auto를 적용하면 FlexBox에서 'flex item을 쉽게 배치 가능
+      · 'margin: auto' 속성을 적용하면, 'flex item'의 바깥 여백이 자동으로 확장돼 'flex item'이 'flex container'의 가운데 위치
+      # 'flex item'을 수평으로 배치
+      * 'margin: 0 auto': 바깥 여백이 'flex item'을 양쪽에서 밀기 때문에 'flex item'이 수평 중앙에 위치
+      * 'margin-right: auto': 바깥 여백이 오른쪽 모든 공간을 차지하기 위해 'flex item'이 오른쪽에서 왼쪽으로 이동
+      * 'margin-left: auto': 바깥 여백이 왼쪽 모든 공간을 차지하기 위해 'flex item'이 왼쪽에서 오른쪽으로 이동
+      # 'flex item'을 수직으로 배치
+      * 'margin-top: auto': 바깥 여백이 위쪽 모든 공간을 차지하기 위해 'flex item'이 위쪽에서 아래쪽으로 이동
+      * 'margin: auto': 바깥 여백이 'flex item'을 위아래로 밀기 때문에 'flex item'이 수직 중앙 위치
+      * 'margin-bottom: auto': 바깥 여백이 아래쪽 모든 공간을 차지하기 위해 'flex item'이 아래쪽에서 위쪽으로 이동
+    -->
+
+  <header class="header">
+    <div class="logo">logo</div>
+    <div class="search">
+      <input type="text" title="검색" class="search_input">
+      <button type="button" class="search_button">검색</button>
+    </div>
+    <div class="gnb">gnb</div>
+  </header>
 </body>
 </html>

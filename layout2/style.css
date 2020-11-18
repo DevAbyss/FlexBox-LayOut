@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  background-color: #00c73c;
+}
+
+.gnb,
+.logo,
+.search {
+  flex: none;
+}
+
+.gnb {
+  margin-left: auto;
+}
+
+.logo,
+.gnb {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: greenyellow;
+  font-weight: bold;
+}
+
+.search {
+  display: flex;
+  width: 400px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.search_button {
+  width: 50px;
+  height: 40px;
+  border: 0;
+  background-color: darkgrey;
+  font-weight: bold;
+}
+
+input {
+  flex: 1;
+  height: 40px;
+}
