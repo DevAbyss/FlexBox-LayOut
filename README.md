@@ -3,6 +3,8 @@
 #### 아래 LayOut은 기존의 display, float, position 속성 등으로 구현이 어렵거나 불가능
 #### (but FlexBox를 사용하면 쉽게 구현)
 
+<br>
+
 - Layout 1 - 스크롤 없는 100% Layout
 - Layout 2 - 내비게이션 영역
 - Layout 3 - 브라우저 화면 아래에 붙는 Footer
