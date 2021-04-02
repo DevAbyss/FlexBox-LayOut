@@ -1,7 +1,6 @@
 # 실무에서 많이 사용하는 10가지 LayOut
 
-#### 아래 LayOut은 기존의 display, float, position 속성 등으로 구현이 어렵거나 불가능
-#### (but FlexBox를 사용하면 쉽게 구현)
+##### 아래 LayOut은 기존의 display, float, position 속성 등으로 구현이 어렵거나 불가능 (but FlexBox를 사용하면 쉽게 구현)
 
 <br>
 
